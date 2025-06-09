@@ -1,0 +1,269 @@
+/* Color Palette & Global Variables */
+$primary-color: #f7931e; // A warm, inviting orange/gold for highlights
+$accent-color: #a020f0; // A vibrant purple for interactive elements
+$bg-color-light: rgba(255, 255, 255, 0.95); // Nearly opaque white for clean look
+$bg-color-dark: rgba(212, 119, 31, 0.8); // Original orange background with transparency
+$glass-effect: blur(15px); // Stronger blur for modern "glassmorphism"
+$text-color-dark: #333; // Dark text for readability
+$text-color-light: #fff; // Light text for contrast on dark backgrounds
+$shadow-light: rgba(0, 0, 0, 0.1); // Subtle shadow for elements
+$shadow-medium: rgba(0, 0, 0, 0.15); // Medium shadow for navbar
+$shadow-strong: rgba(0, 0, 0, 0.25); // Stronger shadow for mobile menu
+
+/* Base NavBar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem; // Generous padding for desktop
+  background: $bg-color-dark; // Use the darker orange background
+  // backdrop-filter: $glass-effect; // Optional: Apply glass effect if you want transparency
+  box-shadow: 0 6px 25px $shadow-medium; // Prominent shadow for depth
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.4s ease-in-out; // Smooth transitions for all properties
+}
+
+/* Logo Area */
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px; // Space between image and text
+  color: $text-color-light; // Ensure text is visible on dark background
+}
+
+.logoImage {
+  height: 50px; // Standard height for desktop logo
+  width: auto;
+  border-radius: 50%; // Circular shape
+  box-shadow: 0 2px 8px $shadow-light; // Subtle shadow for depth
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.08); // Slight zoom on hover
+    box-shadow: 0 4px 12px $shadow-medium; // Enhanced shadow on hover
+  }
+}
+
+.templeName {
+  font-size: 1.8rem; // Large and prominent
+  font-weight: 700; // Bold for impact
+  color: $text-color-light; // White text on the orange background
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); // More pronounced text shadow
+}
+
+/* Hamburger Menu Icon (Mobile) */
+.hamburger {
+  display: none; // Hidden by default on desktop
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 1100; // Above everything else
+  padding: 8px; // Larger tap area
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba($text-color-light, 0.1); // Subtle hover effect
+  }
+}
+
+.bar {
+  width: 30px;
+  height: 4px;
+  background-color: $text-color-light; // White bars on dark background
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Navigation Links */
+.navLinks {
+  display: flex;
+  gap: 1.8rem; // Increased space between links
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: $text-color-light; // White text for links
+  padding: 0.7rem 1.2rem; // More generous padding
+  border-radius: 8px;
+  transition: all 0.3s ease, box-shadow 0.3s ease; // Added box-shadow to transition for smoothness
+  font-weight: 600;
+  font-size: 1.05rem;
+  position: relative;
+
+  &:hover {
+    color: $accent-color; // Accent color on hover
+    background-color: rgba($text-color-light, 0.15); // Light subtle background
+    transform: translateY(-3px); // More noticeable lift
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); // Explicitly added box-shadow for hover
+
+    &::after {
+      width: 100%; // Underline expands
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px; // Thicker underline
+    background-color: $primary-color; // Primary color for underline
+    transition: width 0.3s ease;
+    border-radius: 2px; // Rounded ends for underline
+  }
+}
+
+.activeLink {
+  color: $primary-color; // Primary color for active link
+  font-weight: 700; // Extra bold for active link
+  &::after {
+    width: 100%; // Full underline when active
+    background-color: $primary-color;
+  }
+}
+
+/* Language Selector */
+.languageSelector {
+  margin-left: 2.5rem; // Good separation from nav links
+  select {
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px; // More rounded
+    border: 1px solid rgba($text-color-light, 0.5); // Lighter border, semi-transparent
+    background: rgba($text-color-light, 0.1); // Slightly transparent background
+    color: $text-color-light; // White text in dropdown
+    font-weight: 500;
+    cursor: pointer;
+    max-width: 150px;
+    width: 100%;
+    transition: all 0.3s ease;
+    appearance: none; // Hide default arrow
+    // Custom SVG arrow (white for dark background)
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-24.6%200L146.2%20188.6%2024.6%2069.4a17.6%2017.6%200%200%200-24.6%2024.6l130.4%20130.4c6.8%206.8%2017.6%206.8%2024.6%200L287%2094c6.8-6.6%206.8-17.4%200-24.6z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 0.65em auto, 100%;
+
+    &:hover {
+      border-color: $primary-color;
+      background-color: rgba($text-color-light, 0.2); // More opaque on hover
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba($primary-color, 0.4); // Focus ring
+    }
+
+    option {
+      color: $text-color-dark; // Options typically show dark text on light background
+      background: $bg-color-light;
+    }
+  }
+}
+
+/* --- MOBILE STYLES (Max-width 768px) --- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.8rem 1rem; // Reduced horizontal padding for smaller screens
+  }
+
+  .logo {
+    gap: 8px;
+  }
+
+  .logoImage {
+    height: 40px; // Smaller logo on mobile
+  }
+
+  .templeName {
+    font-size: 1.4rem; // Smaller font for temple name
+  }
+
+  .hamburger {
+    display: flex; // Show hamburger on mobile
+  }
+
+  .navLinks {
+    position: fixed; // Fixed positioning for full-screen overlay
+    top: 0;
+    left: 0;
+    height: 100%; // Full height
+    width: 100%; // Full width
+    background: $bg-color-dark; // Match navbar background
+    // backdrop-filter: $glass-effect; // Optional: Apply glass effect
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; // Center items vertically
+    display: none; // Hidden by default
+    padding: 2rem 0;
+    box-shadow: 0 8px 30px $shadow-strong; // Stronger shadow for overlay
+    max-height: 100vh;
+    overflow-y: auto; // Allow scrolling if content is too long
+    z-index: 999;
+    transform: translateX(100%); // Starts off-screen to the right
+    transition: transform 0.4s ease-out; // Smooth slide-in transition
+  }
+
+  .navLinks.active {
+    display: flex;
+    transform: translateX(0); // Slides into view
+  }
+
+  .navLinks a {
+    width: 85%; // Wider links for easier tapping
+    text-align: center;
+    padding: 1.2rem 0;
+    font-size: 1.3rem;
+    margin-bottom: 0.7rem; // More space between links
+    border-bottom: none; // Remove desktop underline
+    border-radius: 12px; // More rounded buttons
+    background-color: rgba($text-color-light, 0.08); // Subtle background for mobile links
+
+    &:hover {
+      background-color: rgba($text-color-light, 0.15); // Enhanced hover background
+      transform: translateY(-2px); // Slight lift
+      // No box-shadow here on mobile hover for consistency with background highlight
+      // If you want a mobile box-shadow, add it here explicitly
+    }
+
+    &::after {
+      content: none; // Remove underline for mobile links
+    }
+  }
+
+  .activeLink {
+    background-color: rgba($primary-color, 0.2); // Highlight active link with a background color
+    color: $primary-color; // Still use primary color for text
+  }
+
+  .languageSelector {
+    margin: 2rem 0 1rem; // Adjusted margin
+    width: 85%; // Wider selector
+    select {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1.1rem;
+    }
+  }
+}

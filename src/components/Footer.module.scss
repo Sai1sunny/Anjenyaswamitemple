@@ -1,0 +1,156 @@
+.footer {
+  background: linear-gradient(135deg, #4b2c20, #1a0f0a);
+  color: #fff3e6;
+  padding: 2rem 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeIn 1s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .top {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 1rem;
+
+    h2 {
+      font-size: 1.5rem;
+      color: #ffd700;
+      margin-bottom: 0.25rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #e0d2b8;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .newsletter {
+      max-width: 480px;
+
+      h4 {
+        color: #ffd700;
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .form {
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        input {
+          padding: 0.5rem 0.8rem;
+          border: 1px solid #e0d2b8;
+          border-radius: 4px;
+          font-size: 0.95rem;
+          background-color: #fff3e6;
+          color: #4b2c20;
+        }
+
+        button {
+          background-color: #d35400;
+          color: white;
+          padding: 0.5rem;
+          font-size: 0.95rem;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background 0.3s;
+
+          &:hover {
+            background-color: #e67e22;
+          }
+        }
+      }
+    }
+  }
+
+  .bottom {
+    margin-top: 1.5rem;
+    text-align: center;
+
+    p {
+      margin: 0.3rem 0;
+      font-size: 0.85rem;
+      color: #fcebd5;
+    }
+
+    .devLink {
+      color: #25D366;
+      text-decoration: none;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 0.5rem;
+
+      a {
+        font-size: 1.3rem;
+        color: #ffd700;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.15);
+          color: #ffcc00;
+        }
+
+        &::after {
+          content: attr(data-label);
+          font-size: 0.8rem;
+          display: none;
+        }
+
+        @media (max-width: 480px) {
+          display: flex;
+          align-items: center;
+          gap: 0.2rem;
+
+          &::after {
+            display: inline;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .top {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+      gap: 2rem;
+    }
+
+    .newsletter .form {
+      flex-direction: row;
+
+      input {
+        flex: 1;
+      }
+
+      button {
+        flex-shrink: 0;
+      }
+    }
+  }
+}
