@@ -31,48 +31,9 @@ const Footer = () => {
           </form>
         </div>
       </div>
-
-      <div className={styles.bottom}>
-        <p>© 2025 {t('footer.title')}. {t('footer.rights')}</p>
-        <p>
-          {t('footer.developedBy')}{' '}
-          <a
-            href="https://wa.me/917989288815?text=Hi%20Yaswanth%20Kumar%20CH%2C%20I%20am%20looking%20for%20a%20website%20for%20my%20company."
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.devLink}
-          >
-            {t('footer.name')}
-          </a>{' '}
-          | Phone: <a href="tel:+917989288815" className={styles.devLink}>+91 7989288815</a>
-        </p>
-
-        <div className={styles.social}>
-          <a href="https://wa.me/yourwhatsapplink" target="_blank" rel="noreferrer" aria-label="WhatsApp">
-            <FaWhatsapp />
-          </a>
-          <a href="https://yourwebsite.com" target="_blank" rel="noreferrer" aria-label="Website">
-            <FaGlobeAsia />
-          </a>
-          <a href="mailto:your@email.com" aria-label="Email">
-            <FaEnvelope />
-          </a>
-          <a href="https://www.youtube.com/yourchannel" target="_blank" rel="noreferrer" aria-label="YouTube">
-            <FaYoutube />
-          </a>
-          <a href="https://twitter.com/yourprofile" target="_blank" rel="noreferrer" aria-label="Twitter">
-            <FaTwitter />
-          </a>
-          {/* <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <FaLinkedin />
-          </a> */}
-          <a href="https://instagram.com/yourprofile" target="_blank" rel="noreferrer" aria-label="Instagram">
-            <FaInstagram />
-          </a>
-        </div>
-      </div>
     </footer>
   );
 };
 
 export default Footer;
+
